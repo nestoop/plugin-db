@@ -1,0 +1,53 @@
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <!--<context id="MYSQLTables" targetRuntime="MyBatis3">-->
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <!--<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>-->
+        <plugin type="com.payment.mybatis.plugins.LombokPlugin"/>
+        <plugin type="com.payment.mybatis.plugins.ImplementsPlugin">
+            <property name="object" value="com.nest.Logable"/>
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <!-- caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true -->
+            <property name="caseSensitive" value="false"/>
+        </plugin>
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.80.23:3307/dm"
+                        userId="root"
+                        password="maxwit"/>
+
+        <javaModelGenerator targetPackage="com.nest.model.entities"
+                            targetProject="src/main/java">
+
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.nest.model.mapper"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.nest.model.mapper"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+        <table schema="dm" tableName="dm_device" domainObjectName="Device">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>
