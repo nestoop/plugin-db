@@ -11,7 +11,7 @@
 
 	<groupId>com.nest</groupId>
 	<artifactId>nest-sharding-jdbc</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${nest.version}</version>
 	<packaging>jar</packaging>
 
 	<name>nest-sharding-jdbc</name>
@@ -58,6 +58,19 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- 依赖model -->
+		<dependency>
+			<groupId>com.nest</groupId>
+			<artifactId>nest-model</artifactId>
+			<version>${nest.version}</version>
+		</dependency>
+		<!-- 数据库 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.1.8</version>
 		</dependency>
 	</dependencies>
 
